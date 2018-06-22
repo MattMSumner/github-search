@@ -1,0 +1,13 @@
+{
+  "name": "github-search",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Matthew Sumner <matt.m.sumner@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.9.2"
+  },
+  "scripts": {
+    "start": "parcel src/index.html"
+  }
+}
