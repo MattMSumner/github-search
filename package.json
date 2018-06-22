@@ -5,10 +5,12 @@
   "author": "Matthew Sumner <matt.m.sumner@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "parcel-bundler": "^1.9.2"
+    "parcel-bundler": "^1.9.2",
+    "prettier": "^1.13.5"
   },
   "scripts": {
-    "start": "parcel src/index.html"
+    "start": "parcel src/index.html",
+    "lint": "prettier --list-different 'src/**/*.js'"
   },
   "dependencies": {
     "react": "^16.4.1",
