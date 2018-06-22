@@ -27,6 +27,7 @@ module.exports = {
     'prettier/react',
   ],
   rules: {
+    'react/prop-types': 0,
     'filenames/match-regex': ['error', '^[.a-zA-Z0-9]+$'],
     'filenames/match-exported': 'error',
     'graphql/template-strings': [
