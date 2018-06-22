@@ -1,10 +1,12 @@
+const gqlSchemaJson = require('./src/gqlSchema.json')
+
 module.exports = {
   env: {
     browser: true,
     es6: true,
     node: true,
   },
-  plugins: ['react', 'import', 'filenames'],
+  plugins: ['react', 'import', 'graphql', 'filenames'],
   settings: {
     react: {
       version: '16.4',
@@ -27,6 +29,33 @@ module.exports = {
   rules: {
     'filenames/match-regex': ['error', '^[.a-zA-Z0-9]+$'],
     'filenames/match-exported': 'error',
+    'graphql/template-strings': [
+      'error',
+      {
+        env: 'apollo',
+        schemaJson: gqlSchemaJson,
+      },
+    ],
+    'graphql/required-fields': [
+      'error',
+      {
+        env: 'apollo',
+        schemaJson: gqlSchemaJson,
+        requiredFields: ['id'],
+      },
+    ],
+    'graphql/named-operations': [
+      'error',
+      {
+        schemaJson: gqlSchemaJson,
+      },
+    ],
+    'graphql/capitalized-type-name': [
+      'error',
+      {
+        schemaJson: gqlSchemaJson,
+      },
+    ],
     'import/default': 'error',
     'import/extensions': ['error', 'never', { svg: 'always' }],
     'import/first': 'error',
