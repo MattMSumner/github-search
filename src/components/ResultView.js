@@ -1,6 +1,8 @@
 import React from 'react'
 import { Query } from 'react-apollo'
 import { gql } from 'apollo-boost'
+import Waypoint from 'react-waypoint'
+
 import EdgeComponent from './EdgeComponent'
 
 const queryMore = (data, fetchMore) => {
@@ -28,13 +30,13 @@ const ResultView = ({ query }) => (
 
       return (
         <div>
-          <h1>Showing {data.search.edges.length}</h1>
-          {data.search.edges.map(edge => (
-            <EdgeComponent edge={edge} key={edge.cursor} />
-          ))}
-          <button type="button" onClick={() => queryMore(data, fetchMore)}>
-            Get More!
-          </button>
+          <div>
+            <h1>Showing {data.search.edges.length}</h1>
+            {data.search.edges.map(edge => (
+              <EdgeComponent edge={edge} key={edge.cursor} />
+            ))}
+          </div>
+          <Waypoint onEnter={() => queryMore(data, fetchMore)} />
         </div>
       )
     }}
@@ -43,7 +45,7 @@ const ResultView = ({ query }) => (
 
 const SEARCH = gql`
   query searchIssues($query: String!, $cursor: String) {
-    search(query: $query, type: ISSUE, first: 5, after: $cursor) {
+    search(query: $query, type: ISSUE, first: 100, after: $cursor) {
       edges {
         cursor
         textMatches {
